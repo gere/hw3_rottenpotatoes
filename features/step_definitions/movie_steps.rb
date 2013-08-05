@@ -52,3 +52,10 @@ Then /I should (not )?see the following movies:/ do | n, movies_table |
   end
 end
 
+Then /I should see all of the movies/ do
+  movies = Movie.all
+  movies.each do |movie|
+    step %Q{I should see "#{movie[:title]}"}
+  end
+end
+
